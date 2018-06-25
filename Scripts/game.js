@@ -1,6 +1,9 @@
-//Name: Piyush Sehli
-//Student Number: 300984528
-//Date: 25 June, 2018
+/*  
+  Name: Piyush Sehli
+  Student Number: 300984528
+  Date: 25 June, 2018
+  Description: This is a dice rolling game. In this, user need to click start button in order to roll the dice.
+*/
 
 let app;
 (function(app) {
@@ -72,17 +75,16 @@ let app;
    */
   function Main() {
     console.log("Main Function...");
-
-
-    /*addDiceScore(" ", 200, 280);
-    addDiceScore(" ", 450, 280);*/
-    labelOne = new createjs.Text(" ", "25px Consolas", "#000000");
+      
+      //adding label for score of diceOne
+      labelOne = new createjs.Text(" ", "25px Consolas", "#000000");
       labelOne.regX = labelOne.getBounds().width * 0.5;
       labelOne.regY = labelOne.getBounds().height * 0.5;
       labelOne.x = 200;
       labelOne.y = 280;
       stage.addChild(labelOne);
 
+      //adding label for score of diceTwo
       labelTwo = new createjs.Text(" ", "25px Consolas", "#000000");
       labelTwo.regX = labelTwo.getBounds().width * 0.5;
       labelTwo.regY = labelTwo.getBounds().height * 0.5;
@@ -90,20 +92,21 @@ let app;
       labelTwo.y = 280;
       stage.addChild(labelTwo);
 
-       diceOne = new createjs.Bitmap(assetManager.getResult("blank"));
+      //adding diceOne to stage
+      diceOne = new createjs.Bitmap(assetManager.getResult("blank"));
       diceOne.regX = diceOne.getBounds().width * 0.5;
       diceOne.regY = diceOne.getBounds().height * 0.5;
       diceOne.x = 200;
       diceOne.y = 170;
       stage.addChild(diceOne);
 
-       diceTwo = new createjs.Bitmap(assetManager.getResult("blank"));
+      //adding diceTwo to stage      
+      diceTwo = new createjs.Bitmap(assetManager.getResult("blank"));
       diceTwo.regX = diceTwo.getBounds().width * 0.5;
       diceTwo.regY = diceTwo.getBounds().height * 0.5;
       diceTwo.x = 450;
       diceTwo.y = 170;
       stage.addChild(diceTwo);
-
 
       // start button
       startButton = new createjs.Bitmap(assetManager.getResult("StartButton"));
@@ -113,54 +116,47 @@ let app;
       startButton.y = 330;
       stage.addChild(startButton);
 
-
-
-
     // start button listeners
     startButton.addEventListener("click", function() {
-
         console.log("Start Button Clicked");
+        //generating random numbers
         var imgIndex = imgRandom(); 
         var imgIndex2 = imgRandom(); 
-
         var getNumeric1=getImages(imgIndex);
         var getNumeric2=getImages(imgIndex2);
           
-          diceOne.image=assetManager.getResult(getNumeric1);
- labelOne.text = imgIndex;
-  diceTwo.image=assetManager.getResult(getNumeric2);
-  labelTwo.text = imgIndex2;
-
+        //setting the images and labels   
+        diceOne.image=assetManager.getResult(getNumeric1);
+        labelOne.text = imgIndex;
+        diceTwo.image=assetManager.getResult(getNumeric2);
+        labelTwo.text = imgIndex2;
     });
 
    
+    //function having switch case for getting the right images 
     function getImages(imgIndex){
       var tmp="";
       switch(imgIndex){
           case 1:
             tmp="one";
             break;
-
           case 2:
             tmp="two";
-
             break;
-
           case 3: 
             tmp="three";
              break;
-
           case 4:
             tmp="four";
             break;
-
           case 5:
             tmp="five";
             break;
-
           case 6:
             tmp="six";
-
+            break;
+          default:
+            tmp="blank";
             break;
         }
         return tmp;
